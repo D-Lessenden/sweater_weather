@@ -70,18 +70,20 @@ describe 'Forecast API returns info FE team needs' do
 
 
     expect(weather[:attributes]).to have_key(:hourly_weather)
-    expect(weather[:attributes][:hourly_weather].first.keys.count).to eq(5)
+    expect(weather[:attributes][:hourly_weather].first.keys.count).to eq(6)
     expect(weather[:attributes][:hourly_weather].count).to eq(8)
 
     expect(weather[:attributes][:hourly_weather].first).to have_key(:datetime)
     expect(weather[:attributes][:hourly_weather].first[:datetime]).to be_a(String)
+
+    expect(weather[:attributes][:hourly_weather].first).to have_key(:predicted_temp)
+    expect(weather[:attributes][:hourly_weather].first[:predicted_temp]).to be_a(Numeric)
 
     expect(weather[:attributes][:hourly_weather].first).to have_key(:wind_speed)
     expect(weather[:attributes][:hourly_weather].first[:wind_speed]).to be_a(Float)
 
     expect(weather[:attributes][:hourly_weather].first).to have_key(:wind_direction)
     expect(weather[:attributes][:hourly_weather].first[:wind_direction]).to be_a(String)
-    expect(weather[:attributes][:hourly_weather].first[:wind_direction]).to eq('South')
 
     expect(weather[:attributes][:hourly_weather].first).to have_key(:conditions)
     expect(weather[:attributes][:hourly_weather].first[:conditions]).to be_a(String)
