@@ -8,7 +8,6 @@ describe 'Trail API returns info about trails' do
 
     expect(trails[:id]).to eq(nil)
     expect(trails[:type]).to eq('trail')
-    # binding.pry
 
     expect(trails[:attributes]).to have_key(:trails)
     expect(trails[:attributes][:trails]).to be_a(Array)
@@ -26,12 +25,24 @@ describe 'Trail API returns info about trails' do
     expect(trails[:attributes][:trails].first[:location]).to be_a(String)
 
     # expect(trails[:attributes][:trails].first).to have_key(:distance_to_trail)
+    # expect(trails[:attributes][:trails].first[:distance_to_trail]).to be_a(Numeric)
+
+    # binding.pry
+    expect(trails[:attributes]).to have_key(:forecast)
+
+    expect(trails[:attributes][:forecast]).to have_key(:summary)
+    expect(trails[:attributes][:forecast][:summary]).to be_a(String)
 
 
-    # expect(trails[:attributes]).to have_key(:forecast)
-      #has summary, temperature
-      # each trail has name, summary, difficulty, distance_to_trail
+    expect(trails[:attributes][:forecast]).to have_key(:temperature)
+    expect(trails[:attributes][:forecast][:temperature]).to be_a(Numeric)
 
+
+    expect(trails[:attributes]).to have_key(:location)
+
+    expect(trails[:attributes][:location]).to have_key(:location)
+
+    expect(trails[:attributes][:location][:location]).to be_a(String)
 
 
 

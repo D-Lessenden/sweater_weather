@@ -4,35 +4,36 @@ class TrailsSerializer
   set_type 'trail'
 
 
-  def self.location_data(data)
-    data.map do |trail|
-    end
+  attributes :location do |data|
+    {
+      "location": data.location
+    }
   end
 
-  attributes :location do |data|
+  attributes :forecast do |data|
+    {
+      "summary": data.forecast[:current][:weather].first[:description],
+      "temperature": data.forecast[:current][:temp]
+    }
   end
-  #
-  # attributes :forecast do |data|
-  #   {}
-  # end
 
   def self.trail_data(data)
     data.map do |trail|
+      binding.pry 
       {
         "name": trail[:name],
         "summary": trail[:summary],
         "difficulty": trail[:difficulty],
         "location": trail[:location]
-        # "distance_to_trail": trail[:name]
+        # "distance_to_trail": MapService.route(, trail[:location])
       }
     end
   end
 
   attributes :trails do |data|
-    trail_data(data[:trails])
+    binding.pry
+    trail_data(data.trails)
   end
-
-
 
 
 end
