@@ -5,7 +5,7 @@ describe 'Trail API returns info about trails' do
     get '/api/v1/trails?location=denver,co'
     expect(response).to be_successful
     trails = JSON.parse(response.body, symbolize_names: true)[:data]
-    # binding.pry
+
     expect(trails[:id]).to eq(nil)
     expect(trails[:type]).to eq('trail')
 

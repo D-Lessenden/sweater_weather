@@ -8,6 +8,8 @@ class Api::V1::TrailsController < ApplicationController
     json = JSON.parse(response.body, symbolize_names: true)
     trails_search = Trails.new(location: params[:location], forecast: forecast, trails: json)
 
+    # render json: TrailsSerializer.new(TrailsFacade.return_trails(coords))
     render json: TrailsSerializer.new(trails_search)
+
   end
 end
