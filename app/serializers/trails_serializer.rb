@@ -3,8 +3,13 @@ class TrailsSerializer
   set_id {nil}
   set_type 'trail'
 
+
+  def self.location_data(data)
+    data.map do |trail|
+    end
+  end
+
   attributes :location do |data|
-    binding.pry 
   end
   #
   # attributes :forecast do |data|
