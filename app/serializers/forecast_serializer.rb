@@ -40,6 +40,7 @@ class ForecastSerializer
     data.map do |hourly_weather|
       {
         datetime: Forecast.convert_time(hourly_weather[:dt]),
+        predicted_temp: hourly_weather[:temp],
         wind_speed: hourly_weather[:wind_speed],
         wind_direction: Forecast.wind_direction(hourly_weather[:wind_deg]),
         conditions: hourly_weather[:weather][0][:description],
