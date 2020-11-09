@@ -5,7 +5,7 @@ describe 'Trail API returns info about trails' do
     get '/api/v1/trails?location=denver,co'
     expect(response).to be_successful
     trails = JSON.parse(response.body, symbolize_names: true)[:data]
-
+    # binding.pry
     expect(trails[:id]).to eq(nil)
     expect(trails[:type]).to eq('trail')
 
@@ -24,10 +24,9 @@ describe 'Trail API returns info about trails' do
     expect(trails[:attributes][:trails].first).to have_key(:location)
     expect(trails[:attributes][:trails].first[:location]).to be_a(String)
 
-    # expect(trails[:attributes][:trails].first).to have_key(:distance_to_trail)
-    # expect(trails[:attributes][:trails].first[:distance_to_trail]).to be_a(Numeric)
+    expect(trails[:attributes][:trails].first).to have_key(:distance_to_trail)
+    expect(trails[:attributes][:trails].first[:distance_to_trail]).to be_a(Numeric)
 
-    # binding.pry
     expect(trails[:attributes]).to have_key(:forecast)
 
     expect(trails[:attributes][:forecast]).to have_key(:summary)

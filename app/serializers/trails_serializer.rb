@@ -3,7 +3,6 @@ class TrailsSerializer
   set_id {nil}
   set_type 'trail'
 
-
   attributes :location do |data|
     {
       "location": data.location
@@ -17,22 +16,20 @@ class TrailsSerializer
     }
   end
 
-  def self.trail_data(data)
+  def self.trail_data(data, location)
     data.map do |trail|
-      binding.pry 
       {
         "name": trail[:name],
         "summary": trail[:summary],
         "difficulty": trail[:difficulty],
-        "location": trail[:location]
-        # "distance_to_trail": MapService.route(, trail[:location])
+        "location": trail[:location],
+        "distance_to_trail": MapService.route(location, trail[:location])
       }
     end
   end
 
   attributes :trails do |data|
-    binding.pry
-    trail_data(data.trails)
+    trail_data(data.trails, data.location)
   end
 
 
