@@ -30,4 +30,9 @@ class MapService
    array = time.split(":")
    converted = array[0] + ' ' + 'hours' + ' ' + array[1] + ' ' + 'min'
  end
+
+ def self.time_of_arrival(time)
+    arrival = time + Time.now.to_i
+    Time.at(arrival).to_i
+ end
 end

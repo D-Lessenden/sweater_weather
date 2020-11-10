@@ -11,10 +11,12 @@ describe Munchie do
     response = conn.get("/v3/businesses/search?term=chinese&latitude=#{coords[0]}&longitude=#{coords[1]}&limit=1")
     json = JSON.parse(response.body, symbolize_names: true)
 
-    restaurant_route = Munchie.new(forecast: forecast, restaurant: json, destination: route)
+    restaurant_route = Munchie.new(forecast: forecast, restaurant: json, destination: route, city: 'Pueblo, CO')
 
     expect(restaurant_route.destination).to have_key(:route)
     expect(restaurant_route.forecast).to have_key(:current)
     expect(restaurant_route.restaurant).to have_key(:businesses)
+    expect(restaurant_route.city).to eq("Pueblo, CO")
+
   end
 end

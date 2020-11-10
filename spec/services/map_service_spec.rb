@@ -23,4 +23,10 @@ describe 'Map Service' do
     converted = MapService.convert_time(time)
     expect(converted).to eq("01 hours 43 min")
   end
+
+  it 'can grab estimated time of arrival' do
+    time = 6237
+    eta = MapService.time_of_arrival(time)
+    expect(eta).to eq((Time.now + 6237).to_i)
+  end
 end
