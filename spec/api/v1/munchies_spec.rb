@@ -20,5 +20,14 @@ describe 'Yelp API returns info FE team needs' do
     expect(restaurant[:attributes][:restaurant][:address]).to be_a(String)
     expect(restaurant[:attributes][:restaurant][:address]).to eq("315 W 4th St Pueblo, CO 81003")
 
+
+    # expect(restaurant[:attributes]).to have_key(:destination_city)
+    # expect(restaurant[:attributes]).to have_key(:travel_time)
+    # expect(restaurant[:attributes]).to have_key(:forecast)
+    # expect(restaurant[:attributes][:forecast]).to have_key(:summary)
+    # expect(restaurant[:attributes][:forecast]).to have_key(:temperate)
+
+
+
   end
 end
