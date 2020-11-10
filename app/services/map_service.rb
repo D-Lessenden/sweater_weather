@@ -1,8 +1,17 @@
 class MapService
+  def self.conn
+    Faraday.new('https://www.mapquestapi.com')
+  end
+
   def self.return_coords(location)
     coords = []
-    conn = Faraday.new('https://www.mapquestapi.com')
-    response = conn.get("/geocoding/v1/address?key=#{ENV['MAP-API']}&inFormat=kvp&outFormat=json&location=#{location}&thumbMaps=false")
+    response = conn.get("/geocoding/v1/address") do |f|
+      f.params[:key] = ENV['MAP-API']
+      f.params[:inFormat] = 'kvp'
+      f.params[:outFormat] = 'json'
+      f.params[:location] = location
+      f.params[:thumbMaps] = 'false'
+    end
     json = JSON.parse(response.body, symbolize_names: true)
     lat = json[:results].first[:locations].first[:latLng][:lat]
     lon = json[:results].first[:locations].first[:latLng][:lng]
