@@ -49,67 +49,67 @@ describe 'Creates a new user API' do
       expect(json[:error]).to eq("Passwords do not match")
   end
 
-  # xit 'does not create a new user if email is taken' do
-  #   user_params1 = ({
-  #                     email: 'whatever@example.com',
-  #                     password: 'password',
-  #                     password_confirmation: 'password'
-  #                   })
-  #     headers = {'CONTENT_TYPE' => 'application/json'}
-  #     post '/api/v1/users', headers: headers, params: JSON.generate(user_params1)
-  #
-  #
-  #     user_params2 = ({
-  #                       email: 'whatever@example.com',
-  #                       password: 'diff_pass',
-  #                       password_confirmation: 'diff_pass'
-  #                     })
-  #     headers = {'CONTENT_TYPE' => 'application/json'}
-  #     post '/api/v1/users', headers: headers, params: JSON.generate(user_params2)
-  #     json = JSON.parse(response.body, symbolize_names: true)
-  #
-  #
-  #     expect(response).not_to be_successful
-  #     expect(json).to have_key(:error)
-  #     expect(json[:error]).to eq("Email is already registered")
-  # end
-
-    it 'does not create a new user if email is missing' do
-      user_params = ({
-                        password: 'password',
-                        password_confirmation: 'password'
-                      })
+  it 'does not create a new user if email is taken' do
+    user_params1 = ({
+                      email: 'whatever@example.com',
+                      password: 'password',
+                      password_confirmation: 'password'
+                    })
       headers = {'CONTENT_TYPE' => 'application/json'}
-      post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
-      json = JSON.parse(response.body, symbolize_names: true)
-      expect(response).not_to be_successful
-      expect(json).to have_key(:error)
-      expect(json[:error]).to eq("Email is a required field")
-    end
+      post '/api/v1/users', headers: headers, params: JSON.generate(user_params1)
 
-    it 'does not create a new user if password is missing' do
-      user_params = ({
+
+      user_params2 = ({
                         email: 'whatever@example.com',
-                        password_confirmation: 'password'
+                        password: 'diff_pass',
+                        password_confirmation: 'diff_pass'
                       })
       headers = {'CONTENT_TYPE' => 'application/json'}
-      post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+      post '/api/v1/users', headers: headers, params: JSON.generate(user_params2)
       json = JSON.parse(response.body, symbolize_names: true)
-      expect(response).not_to be_successful
-      expect(json).to have_key(:error)
-      expect(json[:error]).to eq("Password is a required field")
-    end
 
-    it 'does not create a new user if password is missing' do
-      user_params = ({
-                        email: 'whatever@example.com',
-                        password: 'password'
-                      })
-      headers = {'CONTENT_TYPE' => 'application/json'}
-      post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
-      json = JSON.parse(response.body, symbolize_names: true)
+
       expect(response).not_to be_successful
       expect(json).to have_key(:error)
-      expect(json[:error]).to eq("Password confirmation is a required field")
-    end
+      expect(json[:error]).to eq("Email is already registered")
+  end
+
+  it 'does not create a new user if email is missing' do
+    user_params = ({
+                      password: 'password',
+                      password_confirmation: 'password'
+                    })
+    headers = {'CONTENT_TYPE' => 'application/json'}
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+    json = JSON.parse(response.body, symbolize_names: true)
+    expect(response).not_to be_successful
+    expect(json).to have_key(:error)
+    expect(json[:error]).to eq("Email is a required field")
+  end
+
+  it 'does not create a new user if password is missing' do
+    user_params = ({
+                      email: 'whatever@example.com',
+                      password_confirmation: 'password'
+                    })
+    headers = {'CONTENT_TYPE' => 'application/json'}
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+    json = JSON.parse(response.body, symbolize_names: true)
+    expect(response).not_to be_successful
+    expect(json).to have_key(:error)
+    expect(json[:error]).to eq("Password is a required field")
+  end
+
+  it 'does not create a new user if password is missing' do
+    user_params = ({
+                      email: 'whatever@example.com',
+                      password: 'password'
+                    })
+    headers = {'CONTENT_TYPE' => 'application/json'}
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+    json = JSON.parse(response.body, symbolize_names: true)
+    expect(response).not_to be_successful
+    expect(json).to have_key(:error)
+    expect(json[:error]).to eq("Password confirmation is a required field")
+  end
 end
