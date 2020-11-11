@@ -2,7 +2,7 @@ class BackgroundsSerializer
   include FastJsonapi::ObjectSerializer
   set_id {nil}
 
-  attributes :background do |data|
+  attributes :image do |data|
     {
       image_url_raw: data[:urls][:raw],
       image_url_full: data[:urls][:full],
