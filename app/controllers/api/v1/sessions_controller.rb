@@ -8,7 +8,7 @@ class Api::V1::SessionsController < ApplicationController
     elsif user.authenticate(params[:password])
       render json: SessionsSerializer.new(user)
     else
-      render json: {error: "Incorrect credentials"}, status: :unauthorized 
+      render json: {error: "Incorrect credentials"}, status: :unauthorized
     end
   end
 end
