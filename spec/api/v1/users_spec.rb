@@ -9,26 +9,26 @@ describe 'Creates a new user API' do
                     })
       headers = {'CONTENT_TYPE' => 'application/json'}
       post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
-      json = JSON.parse(response.body, symbolize_names: true)
+      user_json = JSON.parse(response.body, symbolize_names: true)
       expect(response).to be_successful
       user = User.last
 
-      expect(json[:data]).to have_key(:id)
-      expect(json[:data][:id]).not_to eq(nil)
+      expect(user_json[:data]).to have_key(:id)
+      expect(user_json[:data][:id]).not_to eq(nil)
 
-      expect(json[:data]).to have_key(:type)
-      expect(json[:data][:type]).to be_a(String)
-      expect(json[:data][:type]).to eq("users")
+      expect(user_json[:data]).to have_key(:type)
+      expect(user_json[:data][:type]).to be_a(String)
+      expect(user_json[:data][:type]).to eq("users")
 
-      expect(json[:data]).to have_key(:attributes)
-      expect(json[:data][:attributes]).to have_key(:email)
-      expect(json[:data][:attributes][:email]).to be_a(String)
-      expect(json[:data][:attributes][:email]).to eq('whatever@example.com')
+      expect(user_json[:data]).to have_key(:attributes)
+      expect(user_json[:data][:attributes]).to have_key(:email)
+      expect(user_json[:data][:attributes][:email]).to be_a(String)
+      expect(user_json[:data][:attributes][:email]).to eq('whatever@example.com')
 
-      expect(json[:data][:attributes]).to have_key(:api_key)
-      expect(json[:data][:attributes][:api_key]).to be_a(String)
+      expect(user_json[:data][:attributes]).to have_key(:api_key)
+      expect(user_json[:data][:attributes][:api_key]).to be_a(String)
 
-      expect(json[:data][:attributes]).not_to have_key(:password)
+      expect(user_json[:data][:attributes]).not_to have_key(:password)
 
       expect(user.id).not_to eq(nil)
       expect(user.email).to eq('whatever@example.com')
