@@ -35,4 +35,16 @@ describe ForecastService do
     expect(forecast[:hourly].first[:weather].first).to have_key(:description)
     expect(forecast[:hourly].first[:weather].first).to have_key(:icon)
   end
+
+  it 'can return weather at an eta' do
+    time = MapService.time_of_arrival(6237)
+    coords = MapService.return_coords('denver,co')
+    forecast = ForecastService.weather_at_eta(coords, time)
+    expect(forecast).to be_a(Hash)
+    expect(forecast).to have_key(:temp)
+    expect(forecast[:temp]).to be_a(Numeric)
+    expect(forecast).to have_key(:weather)
+    expect(forecast[:weather]).to be_a(Array)
+    expect(forecast[:weather].first[:description]).to be_a(String)
+  end
 end
