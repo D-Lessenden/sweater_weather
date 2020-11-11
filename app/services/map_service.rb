@@ -34,4 +34,17 @@ class MapService
    end
    json = JSON.parse(response.body, symbolize_names: true)
  end
+
+ def self.convert_time(time)
+   array = time.split(":")
+   converted = array[0] + ' ' + 'hours' + ' ' + array[1] + ' ' + 'minutes'
+ end
+
+ def self.time_of_arrival(time)
+    eta = DateTime.now.to_i + time
+    arrival = Time.at(eta)
+    arrival.beginning_of_hour.to_i
+ end
+
+
 end
