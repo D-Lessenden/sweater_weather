@@ -3,7 +3,4 @@ class UsersSerializer
 
   attributes :email, :api_key
 
-  # attributes :users do |data|
-  #   binding.pry
-  # end
   end
