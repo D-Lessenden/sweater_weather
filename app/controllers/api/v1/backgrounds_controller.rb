@@ -1,6 +1,5 @@
 class Api::V1::BackgroundsController < ApplicationController
   def show
-    coords = MapFacade.return_coords(params[:location])
-    render json: BackgroundsSerializer.new(BackgroundsFacade.return_background(coords))
+    render json: BackgroundsSerializer.new(BackgroundsFacade.return_background(params[:location]))
   end
 end
