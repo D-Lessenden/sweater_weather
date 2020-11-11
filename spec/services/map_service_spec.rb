@@ -17,6 +17,17 @@ describe 'Map Service' do
    expect(route[:route][:formattedTime]).to eq("01:43:57")
    expect(route[:route]).to have_key(:time)
    expect(route[:route][:time]).to eq(6237)
-   # expect(route[:route][:realTime]).to eq(6395) this is current time
  end
+
+ it 'converts time to h and m' do
+    time = "01:43:57"
+    converted = MapService.convert_time(time)
+    expect(converted).to eq("01 hours 43 minutes")
+  end
+
+  it 'can grab estimated time of arrival' do
+    time = 6237
+    eta = MapService.time_of_arrival(time)
+    expect(eta).to eq((Time.now + 6237).beginning_of_hour.to_i)
+  end
 end
