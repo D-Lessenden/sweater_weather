@@ -1,5 +1,5 @@
 class RoadTrip
-  attr_reader :forecast, :start_city, :end_city, :route
+  attr_reader :forecast, :start_city, :end_city, :route, :weather_at_eta
   def initialize(params)
     @forecast = params[:forecast]
     @start_city = params[:start_city]
