@@ -9,5 +9,9 @@ script:
 deploy:
   provider: heroku
   api_key:
-  app:
-  run: rails db:migrate
+    secure: 10o9gk0AYwxoJ5CzWjGaozoVakrSeGx+rzxZ6I2YZk2lwWKjPNC/M+r5Rf1vGfOlaMdKncjLbstc5NI/P2QEFZ6MDW79FnmLPKUjPCLI4BGhUwl+yPXukY8lDUOfgznyh+sBMnTL1sFJNrw+Tj/VxmiGzY+ETNJN588CykYvdMDK3qz303tROHmg/MgTJVKzTVlQXYc5An2hTAbk6PzSTSTI4d1jMSaGjfgle1sllUnUDAN2uUMYvQbWT+GQQqwJhTtuiQobbcDAsHll+RK4vNJFF3FFoC3yz4cHEVpqq8SfBl4i4FAvBUrtrM3tHJ8rg+Z9z6bl4N5YTRbgaOsVv9UorxQG9PI68BFsV7kxvmyZujrGeI5P2Q8jtF9wrjkJA/OnIXoNDshy9vKOKE2I49rRkNTqU8iFN7dG7bHvNJ/HUXBhko41GnZJ9cdpcAJ7Y1UnBzwNWGHoKZrVma/cqwUgollTCIUnms1kM0gDk/3eC3Y7QirsPEYk6huFKdYRslBr+qBg3yhsABxT5lnklG9sfbwLGjn1Xv/dQQevcDTx4KEgUY7zNchtkRSBon7LIyL0dFTK2PJ/w7aWXRBYrfc10T//gzfDbt3XMcYfx/Mh/S34yjnOh0JrwFQrOmx49HhyPSjZ61hqhGJDH3M1U/8hXAUwH3L6KADrpqFrkoo=
+  app: sweater-weather-dfl
+  on:
+    repo: D-Lessenden/sweater_weather
+    branch: main
+  skip_cleanup: 'true'
