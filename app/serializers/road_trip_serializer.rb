@@ -7,7 +7,7 @@ class RoadTripSerializer
     if data.route[:info][:messages].first == "We are unable to route with the given locations."
       "Impossible"
     else
-    MapService.convert_time(data.route[:route][:formattedTime])
+      MapService.convert_time(data.route[:route][:formattedTime])
     end
   end
 

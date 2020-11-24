@@ -42,7 +42,6 @@ describe 'Forecast API returns info FE team needs' do
     expect(weather[:attributes][:current_weather]).to have_key(:icon)
     expect(weather[:attributes][:current_weather][:icon]).to be_a(String)
 
-
     expect(weather[:attributes]).to have_key(:daily_weather)
     expect(weather[:attributes][:daily_weather].count).to eq(5)
     expect(weather[:attributes][:daily_weather].first.keys.count).to eq(7)
