@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Road Trip API returns info FE team needs' do
   it 'returns road trip info for location 1 to location 2' do
     user_params = ({
-                      email: 'whatever@example.com',
+                      email: 'whatever123456@example.com',
                       password: 'password',
                       password_confirmation: 'password'
                     })
@@ -11,7 +11,7 @@ describe 'Road Trip API returns info FE team needs' do
     headers = {'CONTENT_TYPE' => 'application/json'}
     post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
     user = JSON.parse(response.body, symbolize_names: true)
-
+    # binding.pry
     road_trip_params = ({
                       origin: 'Denver, CO',
                       destination: 'Pueblo, CO',
