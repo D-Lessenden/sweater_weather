@@ -1,0 +1,15 @@
+current directory: /Users/lessenden/turing/3module/projects/final/sweater_weather/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.5.0/ext/bootsnap
+/Users/lessenden/.rbenv/versions/2.5.3/bin/ruby -I /Users/lessenden/.rbenv/versions/2.5.3/lib/ruby/site_ruby/2.5.0 -r ./siteconf20210209-39888-17qxacj.rb extconf.rb
+creating Makefile
+
+current directory: /Users/lessenden/turing/3module/projects/final/sweater_weather/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.5.0/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/lessenden/turing/3module/projects/final/sweater_weather/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.5.0/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/lessenden/turing/3module/projects/final/sweater_weather/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.5.0/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20210209-39888-1sh7dtz/bootsnap
